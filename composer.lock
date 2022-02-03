@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6add16d9aa67ae0d1cdbcec6eb4734b",
+    "content-hash": "979461aaf5a95e8a3a963dae9c53d357",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5410,6 +5410,63 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.10.0"
             },
             "time": "2021-03-09T10:59:23+00:00"
+        },
+        {
+            "name": "yasinkose/api-responder",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/YasinKose/api-responder.git",
+                "reference": "feec4c3965beff9850e4a392da084d8d3ed41ced"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/YasinKose/api-responder/zipball/feec4c3965beff9850e4a392da084d8d3ed41ced",
+                "reference": "feec4c3965beff9850e4a392da084d8d3ed41ced",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0|^5.0|^6.0",
+                "phpunit/phpunit": "^8.4|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "YasinKose\\ApiResponder\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "YasinKose\\ApiResponder\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yasin Köse",
+                    "email": "yasin.kose.123@gmail.com"
+                }
+            ],
+            "description": "A api responder",
+            "keywords": [
+                "api",
+                "responder"
+            ],
+            "support": {
+                "issues": "https://github.com/YasinKose/api-responder/issues",
+                "source": "https://github.com/YasinKose/api-responder/tree/v1.0.1"
+            },
+            "time": "2021-12-13T11:27:29+00:00"
         }
     ],
     "packages-dev": [
