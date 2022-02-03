@@ -18,3 +18,9 @@ $router->post("register", ["as" => "register", "uses" => "AuthController@registe
 $router->post("reset-password", ["as" => "resetPassword", "uses" => "AuthController@resetPassword"]);
 $router->post("reset-password-token", ["as" => "resetPasswordToken", "uses" => "AuthController@resetPasswordToken"]);
 $router->post("check-reset-password-token", ["as" => "checkResetPasswordToken", "uses" => "AuthController@checkResetPasswordToken"]);
+
+$router->group(["middleware" => "auth:web"], function () use ($router) {
+    $router->get("/", function () {
+        return "Authorization Successfully!";
+    });
+});
