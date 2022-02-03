@@ -67,6 +67,7 @@ $app->configure('app');
 */
 $app->configure('cors');
 $app->configure('mail');
+$app->configure('database');
 
 /*
 |--------------------------------------------------------------------------
@@ -122,6 +123,7 @@ $app->alias('mailer', Illuminate\Contracts\Mail\Mailer::class);
 $app->alias('mailer', Illuminate\Contracts\Mail\MailQueue::class);
 
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+$app->register(Illuminate\Redis\RedisServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
