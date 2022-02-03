@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CheckResetPasswordTokenRequest;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\ResetPasswordRequest;
@@ -79,6 +80,10 @@ class AuthController extends Controller
             ->where('token', $request->input('token'))
             ->first();
 
+        if (!$token) {
+            return Respond::notFound(__('lang.reset-password-token.invalid-token'));
+        }
+
         if (dateLessThan($token->created_at, 15)) {
             return Respond::error(__('lang.reset-password-token.expired'));
         }
@@ -90,5 +95,20 @@ class AuthController extends Controller
         DB::table('password_resets')->delete($token->id);
 
         return Respond::ok(__('lang.reset-password-token.successful'));
+    }
+
+    public function checkResetPasswordToken(CheckResetPasswordTokenRequest $request)
+    {
+        $token = DB::table('password_resets')->where('token', $request->input('token'))->first();
+
+        if (!$token) {
+            return Respond::notFound(__('lang.check-reset-password-token.invalid-token'));
+        }
+
+        if (dateLessThan($token->created_at, 15)) {
+            return Respond::error(__('lang.check-reset-password-token.expired'));
+        }
+
+        return Respond::ok(__('lang.check-reset-password-token.successful'), $token);
     }
 }
