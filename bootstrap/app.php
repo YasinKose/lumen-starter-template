@@ -67,6 +67,7 @@ $app->configure('app');
 |--------------------------------------------------------------------------
 */
 $app->configure('cors');
+$app->configure('mail');
 
 /*
 |--------------------------------------------------------------------------
@@ -110,8 +111,16 @@ $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 $app->register(Urameshibr\Providers\FormRequestServiceProvider::class);
 $app->register(Fruitcake\Cors\CorsServiceProvider::class);
+
 $app->register(YasinKose\ApiResponder\ServiceProvider::class);
 class_alias(YasinKose\ApiResponder\Facades\ApiResponder::class, "Respond");
+
+$app->register(Illuminate\Mail\MailServiceProvider::class);
+$app->alias('mail.manager', Illuminate\Mail\MailManager::class);
+$app->alias('mail.manager', Illuminate\Contracts\Mail\Factory::class);
+$app->alias('mailer', Illuminate\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\MailQueue::class);
 
 /*
 |--------------------------------------------------------------------------
