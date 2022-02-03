@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\ResetPasswordRequest;
+use App\Http\Requests\ResetPasswordTokenRequest;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -65,5 +67,28 @@ class AuthController extends Controller
         });
 
         return Respond::ok(__('lang.reset-password.successful'));
+    }
+
+    /**
+     * @param ResetPasswordTokenRequest $request
+     * @return JsonResponse
+     */
+    public function resetPasswordToken(ResetPasswordTokenRequest $request): JsonResponse
+    {
+        $token = DB::table('password_resets')
+            ->where('token', $request->input('token'))
+            ->first();
+
+        if (dateLessThan($token->created_at, 15)) {
+            return Respond::error(__('lang.reset-password-token.expired'));
+        }
+
+        User::find($token->user_id)->update([
+            'password' => $request->input('password')
+        ]);
+
+        DB::table('password_resets')->delete($token->id);
+
+        return Respond::ok(__('lang.reset-password-token.successful'));
     }
 }
