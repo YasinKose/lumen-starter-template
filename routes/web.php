@@ -17,4 +17,4 @@ $router->post("login", ["as" => "login", "uses" => "AuthController@login"]);
 $router->post("register", ["as" => "register", "uses" => "AuthController@register"]);
 $router->post("reset-password", ["as" => "resetPassword", "uses" => "AuthController@resetPassword"]);
 $router->post("reset-password-token", ["as" => "resetPasswordToken", "uses" => "AuthController@resetPasswordToken"]);
-
+$router->post("check-reset-password-token", ["as" => "checkResetPasswordToken", "uses" => "AuthController@checkResetPasswordToken"]);
