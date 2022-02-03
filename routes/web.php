@@ -15,3 +15,4 @@
 
 $router->post("login", ["as" => "login", "uses" => "AuthController@login"]);
 $router->post("register", ["as" => "register", "uses" => "AuthController@register"]);
+$router->post("reset-password", ["as" => "resetPassword", "uses" => "AuthController@resetPassword"]);
