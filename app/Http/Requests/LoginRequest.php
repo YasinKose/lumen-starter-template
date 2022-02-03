@@ -9,7 +9,7 @@ class LoginRequest extends FormRequest
      */
     public function responseMessage(): string
     {
-        return __('lang.login.response');
+        return __('lang.login.response-message');
     }
 
     /**

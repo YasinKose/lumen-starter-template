@@ -4,18 +4,21 @@ return [
     'default' => [
         'form-request' => 'Validasyon işleminiz başarısız',
     ],
-    'login' => [
+    'validation' => [
         'email' => 'Mail Adresi',
         'password' => 'Şifre',
-        'response' => 'Giriş başarısız!',
+        'name' => 'Ad',
+        'surname' => 'Soyad',
+    ],
+    'login' => [
+        'response-message' => 'Giriş başarısız!',
         'no-matching-account-found' => 'Eşleşen hesap bulunamadı!',
         'successful' => 'Giriş başarılı!',
     ],
     'register' => [
-        'response' => 'Kayıt başarısız!',
-        'name' => 'Ad',
-        'surname' => 'Soyad',
-        'email' => 'Mail adresi',
-        'password' => 'Şifre',
+        'response-message' => 'Kayıt başarısız!',
+    ],
+    'reset-password' => [
+        'response-message' => 'Şifre sıfırlama isteği gönderimi başarısız!',
     ],
 ];

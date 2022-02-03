@@ -9,7 +9,7 @@ class RegisterRequest extends FormRequest
      */
     public function responseMessage(): string
     {
-        return __('lang.register.response');
+        return __('lang.register.response-message');
     }
 
     /**
@@ -55,10 +55,10 @@ class RegisterRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'name' => __('lang.register.name'),
-            'surname' => __('lang.register.surname'),
-            'email' => __('lang.register.email'),
-            'password' => __('lang.register.password')
+            'name' => __('lang.validation.name'),
+            'surname' => __('lang.validation.surname'),
+            'email' => __('lang.validation.email'),
+            'password' => __('lang.validation.password')
         ];
     }
 }
