@@ -3,6 +3,7 @@
 return [
     'default' => [
         'form-request' => 'Validasyon işleminiz başarısız',
+        'unauthorization' => 'Lütfen öncelikle giriş yapınız.',
     ],
     'validation' => [
         'name' => 'Ad',
