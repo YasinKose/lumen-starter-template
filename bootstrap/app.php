@@ -110,7 +110,8 @@ $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 $app->register(Urameshibr\Providers\FormRequestServiceProvider::class);
 $app->register(Fruitcake\Cors\CorsServiceProvider::class);
-
+$app->register(YasinKose\ApiResponder\ServiceProvider::class);
+class_alias(YasinKose\ApiResponder\Facades\ApiResponder::class, "Respond");
 
 /*
 |--------------------------------------------------------------------------
