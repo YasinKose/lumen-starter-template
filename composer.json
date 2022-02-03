@@ -14,6 +14,7 @@
         "predis/predis": "^1.1",
         "tymon/jwt-auth": "^1.0",
         "urameshibr/lumen-form-request": "^1.5",
+        "vladimir-yuldashev/laravel-queue-rabbitmq": "^11.3",
         "yasinkose/api-responder": "^1.0"
     },
     "require-dev": {
