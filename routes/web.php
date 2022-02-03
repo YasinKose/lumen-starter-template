@@ -14,3 +14,4 @@
 */
 
 $router->post("login", ["as" => "login", "uses" => "AuthController@login"]);
+$router->post("register", ["as" => "register", "uses" => "AuthController@register"]);
