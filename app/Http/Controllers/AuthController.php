@@ -56,7 +56,6 @@ class AuthController extends Controller
         $token = Str::random(32);
 
         DB::table('password_resets')->insert([
-            'email' => $user->email,
             'user_id' => $user->id,
             'token' => $token,
             'created_at' => Carbon::now()
@@ -85,6 +84,7 @@ class AuthController extends Controller
         }
 
         if (dateLessThan($token->created_at, 15)) {
+            DB::table('password_resets')->delete($token->id);
             return Respond::error(__('lang.reset-password-token.expired'));
         }
 
@@ -99,13 +99,14 @@ class AuthController extends Controller
 
     public function checkResetPasswordToken(CheckResetPasswordTokenRequest $request)
     {
-        $token = DB::table('password_resets')->where('token', $request->input('token'))->first();
+        $token = DB::table('password_resets')->select(['token', 'created_at'])->where('token', $request->input('token'))->first();
 
         if (!$token) {
             return Respond::notFound(__('lang.check-reset-password-token.invalid-token'));
         }
 
         if (dateLessThan($token->created_at, 15)) {
+            DB::table('password_resets')->where('token', $request->input('token'))->delete();
             return Respond::error(__('lang.check-reset-password-token.expired'));
         }
 
